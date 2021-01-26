@@ -88,6 +88,7 @@ module.exports = env => {
       publicPath: process.env.BASE_ASSETS_PATH || "",
       useLocalIp: true,
       allowedHosts: [host],
+      disableHostCheck: true,
       headers: {
         "Access-Control-Allow-Origin": "*"
       },
