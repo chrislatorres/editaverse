@@ -72,7 +72,9 @@ export default class App extends Component {
               <Column as={Suspense} fallback={<Loading message="Loading..." fullScreen />}>
                 <Switch>
                   {configs.isMoz() && <Route path="/" exact component={LandingPage} />}
-                  {!configs.isMoz() && <RedirectRoute path="/" exact to="/projects" />}
+                  {!configs.isMoz() && <RedirectRoute path="/" exact to="/projects/new" />}
+                  <Route path="/projects/:projectId" component={EditorContainer} />
+{/*
                   <Route path="/whats-new" exact component={WhatsNewPage} />
                   <RedirectRoute path="/new" exact to="/projects" />
                   <Route path="/login" exact component={LoginPage} />
@@ -82,6 +84,7 @@ export default class App extends Component {
                   <Route path="/projects" exact component={ProjectsPage} />
                   <Route path="/projects/:projectId" component={EditorContainer} />
                   <Route path="/kits/package" component={PackageKitPage} />
+*/}
                   <Route render={() => <Error message="Page not found." />} />
                 </Switch>
               </Column>
