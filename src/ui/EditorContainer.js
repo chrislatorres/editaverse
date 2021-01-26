@@ -29,6 +29,7 @@ import ProgressDialog from "./dialogs/ProgressDialog";
 import ConfirmDialog from "./dialogs/ConfirmDialog";
 import SaveNewProjectDialog from "./dialogs/SaveNewProjectDialog";
 import ExportProjectDialog from "./dialogs/ExportProjectDialog";
+import PerformanceCheckDialog from "./dialogs/PerformanceCheckDialog";
 
 import Onboarding from "./onboarding/Onboarding";
 import SupportDialog from "./dialogs/SupportDialog";
@@ -689,7 +690,15 @@ class EditorContainer extends Component {
     try {
       const editor = this.state.editor;
 
-      const { glbBlob } = await editor.exportScene(abortController.signal, options);
+      const { glbBlob, scores } = await editor.exportScene(abortController.signal, { ...options, scores: true });
+
+      const performanceCheckResult = await new Promise(resolve => {
+        showDialog(PerformanceCheckDialog, {
+          scores,
+          onCancel: () => resolve(false),
+          onConfirm: () => resolve(true)
+        });
+      });
 
       const glbFile = this.blobToFile(glbBlob, "scene.glb")
 
