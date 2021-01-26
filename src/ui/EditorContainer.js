@@ -700,6 +700,12 @@ class EditorContainer extends Component {
         });
       });
 
+      if (!performanceCheckResult) {
+        const error = new Error("Publish project canceled");
+        error.aborted = true;
+        throw error;
+      }
+
       const glbFile = this.blobToFile(glbBlob, "scene.glb")
 
       let hash;
