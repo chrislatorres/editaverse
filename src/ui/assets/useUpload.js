@@ -47,6 +47,7 @@ export default function useUpload(options = {}) {
           }
         }
 
+/*
         if (!editor.api.isAuthenticated()) {
           // Ensure the user is authenticated before continuing.
           const loggedIn = await new Promise(resolve => {
@@ -61,6 +62,7 @@ export default function useUpload(options = {}) {
             return null;
           }
         }
+*/
 
         const abortController = new AbortController();
 
