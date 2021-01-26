@@ -693,7 +693,7 @@ class EditorContainer extends Component {
       const { glbBlob, scores } = await editor.exportScene(abortController.signal, { ...options, scores: true });
 
       const performanceCheckResult = await new Promise(resolve => {
-        showDialog(PerformanceCheckDialog, {
+        this.showDialog(PerformanceCheckDialog, {
           scores,
           onCancel: () => resolve(false),
           onConfirm: () => resolve(true)
