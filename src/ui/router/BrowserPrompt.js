@@ -10,7 +10,7 @@ export default class BrowserPrompt extends React.Component {
   constructor(props) {
     super(props);
 
-    window.addEventListener("beforeunload", this.onBeforeUnload);
+//    window.addEventListener("beforeunload", this.onBeforeUnload);
   }
 
   onBeforeUnload = e => {
